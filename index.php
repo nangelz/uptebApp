@@ -1,80 +1,54 @@
-<?php
-    require_once("header.php");
-    require_once("footer.php");
-    
-    ?>
-  <body>
-    <div class="container">
-      <div class="forms-container">
-        <div class="signin-signup">
-          <form action="controller/verify.php" method="POST" class="sign-in-form">
-          <h2 class="title">Iniciar sesion</h2>
-            <div class="input-field">
-              <i class="fas fa-user"></i>
-              <input type="text" name="username" placeholder="Nombre de Usuario" />
-            </div>
-            <div class="input-field">
-              <i class="fas fa-lock"></i>
-              <input type="password" name="password" placeholder="Contraseña" />
-            </div>
-            <input type="submit" value="Iniciar sesion" class="btn solid" />
-            <a class="social-text">¿Olvido su contraseña?</a>
-      
-          </form>
-          <form action="controller/register_user.php" method="POST" class="sign-up-form">
-          
-            <h2 class="title">Registrar</h2>
-            <div class="input-field">
-              <i class="fas fa-user"></i>
-              <input type="text" placeholder="Nombres" name="name"/>
-            </div>
-            <div class="input-field">
-              <i class="fas fa-user"></i>
-              <input type="text" placeholder="Apellidos" name="lastname"/>
-            </div> 
-            <div class="input-field">
-              <i class="fas fa-user"></i>
-              <input type="text" placeholder="Nombre de Usuario" name="username"/>
-            </div>
-            <div class="input-field">
-              <i class="fas fa-envelope"></i>
-              <input type="email" placeholder="Email" name="email" />
-            </div>
-            <div class="input-field">
-              <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Contraseña" name="password" />
-            </div>
-            <input type="submit" class="btn" value="Registrar" />
-  
-          </form>
-        </div>
-      </div>
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <div class="panels-container">
-        <div class="panel left-panel">
-          <div class="content">
-            <h3>¿Eres nuevo?</h3>
-            <p>
-              ¡Bienvenido!, dejame guiarte en tus primeros pasos... Presiona el boton de abajo si deseas registrarte.
-            </p>
-            <button class="btn transparent" id="sign-up-btn">
-              Registro
-            </button>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="public/css/login.css">
+    <title>Login de usuario</title>
+  </head>
+  <body>
+  <div class="container-fluid ps-md-0">
+  <div class="row g-0">
+    <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+    <div class="col-md-8 col-lg-6">
+      <div class="login d-flex align-items-center py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-9 col-lg-8 mx-auto">
+              <h3 class="login-heading mb-4">Login de usuario</h3>
+
+              <!-- Sign In Form -->
+              <form action="server/login/logear.php" method="post">
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" name="usuario" id="usuario" placeholder="Usuario">
+                  <label for="usuario">Usuario</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+                  <label for="password">Password</label>
+                </div>
+                <div class="d-grid">
+                  <button class="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2" type="submit">Entrar</button>
+                  <div class="text-center">
+                    <a class="small" href="registro.php">Registrate aqui!</a>
+                  </div>
+                </div>
+
+              </form>
+            </div>
           </div>
-          <img src="assets/img/log.svg" class="image" alt="" />
-        </div>
-        <div class="panel right-panel">
-          <div class="content">
-            <h3>¿Deseas iniciar sesion?</h3>
-            <p>
-              Si ya tienes una cuenta no necesitas registrarte, así que presiona el boton de abajo para que puedas iniciar tu sesion.
-            </p>
-            <button class="btn transparent" id="sign-in-btn">
-              Iniciar Sesion
-            </button>
-          </div>
-          <img src="assets/img/register.svg" class="image" alt="" />
         </div>
       </div>
     </div>
-<script src="assets/js/change.js"></script>
+  </div>
+</div>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    
+  </body>
+</html>

@@ -1,80 +1,52 @@
 <?php
-require_once ("../header.php");
-require_once ("header.php");
-require_once ("footer.php");
-require_once ("../controller/view_users.php");
-
+  include "../class/Conexion.php";
+  $conn = new Conexion(); 
+  $id=  $_SESSION['user_id'];
+  $sql = "SELECT * FROM users AS us JOIN info_user AS inf ON us.user_id = inf.user_id JOIN roles AS rol ON us.role_id = rol.role_id WHERE us.user_id = $id ";
+  $con = $conn->conectar();
+  $result= mysqli_query($con,$sql);
+  $data= mysqli_fetch_row($result); 
 ?>
 
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-     <h1 class="h2">Perfil / Configuraciones</h1>
-</div>
-
 <main>
-<div class="container-quest">
-    <div class="forms-container">
-        <div class="Preguntas-seguridad">
-          <form action="../controller/register_quest.php" method="POST" class="answer-security-form">
-            <div class="input-field">
-              <label for="">Pregunta 1 </label>
-              <select name="quest1" id="quest1">
-                <option value="comida favorita" >¿Cual es tu comida favorita?</option>
-                <option value="color favorito" >¿Cual es tu color favorito?</option>
-                <option value="pelicula favorita" >¿Cual es tu pelicula favorita?</option>
-                <option value="cancion favorita" >¿Cual es tu cancion favorita?</option>
-            </select>
-              
-            </div>
-            <div class="input-field">
-              <label > Respuesta 1 </label>
-              <input type="text" name="answer1" />
-            </div>
-            <div class="input-field">
-              <label> Pregunta 2 </label>
-            <select name="quest2" id="quest2">
-                <option value="comida favorita" >¿Cual es tu comida favorita?</option>
-                <option value="color favorito" >¿Cual es tu color favorito?</option>
-                <option value="pelicula favorita" >¿Cual es tu pelicula favorita?</option>
-                <option value="cancion favorita" >¿Cual es tu cancion favorita?</option>
-            </select>
-            <div class="input-field">
-              <label for="">Respuesta 2</label>
-              <input type="text" name="answer2" placeholder="Respuesta 2" />
-            </div>
-            <button type="submit" value="Guardar"> Guardar cambios</button>
-          </form>
-        </div>
-    </div>
-</div>
-
-<div class="container-config">
-  <div class="forms-container">
-    <div class="profile-settings">
-        <form action="#">
+			<div class="head-title">
+				<div class="left">
+					<h1>Configuraciones.</h1>
+				</div>
+			</div>
+        
+				<div class="todo">
+        <div class="head">
+						<h3>Datos de perfil</h3>
+					</div>
+          <form action="../class/actualizar.php" > 
           <div class="input-field">
-            <label for="username">Nombre de usuario:</label>
-            <input type="text" id="username" name="username" placeholder="<?php echo $view['username']?>">
+          <input type="text" hidden="" value="<?php echo $id ?>" name="id"/> 
+          </div>
+					 <div class="input-field">
+            <label for="username">Usuario:</label>
+            <input type="text" id="username" name="username" placeholder="<?php echo $data[1];?>">
           </div>
           <div class="input-field">
-            <label for="username">Nombre de usuario:</label>
-            <input type="text" id="username" name="username" placeholder="<?php echo $view['name_us']?>">
+            <label for="name">Nombre:</label>
+            <input type="name" id="name" name="name" placeholder="<?php echo $data[9]?>">
           </div>
           <div class="input-field">
-            <label for="username">Nombre de usuario:</label>
-            <input type="text" id="username" name="username" placeholder="<?php echo $view['user_lastname']?>">
+            <label for="lastname">Apellido:</label>
+            <input type="text" id="lastname" name="lastname" placeholder="<?php echo $data[10]?>">
           </div>
           <div class="input-field">
             <label for="email">Correo electrónico:</label>
-            <input type="email" id="email" name="email" placeholder="<?php echo $view['user_email']?>">
+            <input type="email" id="email" name="email" placeholder="<?php echo $data[3]?>">
           </div>
           <div class="input-field">
             <label for="password">Contraseña:</label>
             <input type="password" id="password" name="password" placeholder="Tu contraseña">
           </div>
-           
-            <button type="submit">Guardar cambios</button>
+          <button type="submit" value="Guardar"> Guardar cambios</button> 
+      
         </form>
-     </div>
-  </div>
-</div>
-</main>
+			</div>
+
+		</main>
+</section>
